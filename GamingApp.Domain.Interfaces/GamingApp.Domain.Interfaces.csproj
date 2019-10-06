@@ -43,10 +43,9 @@
   <ItemGroup>
     <Compile Include="DAC\IGamingAppDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IStatisticsService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GamingApp.Domain.DataContext\GamingApp.Domain.DataContext.csproj">
       <Project>{79573AC1-DF37-48CB-9153-C414D76CE3F2}</Project>
