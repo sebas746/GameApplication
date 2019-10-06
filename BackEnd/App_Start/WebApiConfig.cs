@@ -21,6 +21,7 @@ namespace GamingAppBackEnd
             container.RegisterType<IStatisticsService, StatisticsService>();
             container.RegisterType<IGamingAppDAC, GamingAppDAC>();
             container.RegisterType(typeof(IRepository<>), typeof(BaseRepository<>));
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes

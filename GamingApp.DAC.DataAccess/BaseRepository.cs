@@ -66,7 +66,7 @@ namespace GamingApp.DAC.DataAccess
 
         public virtual void Insert(TEntity entity)
         {
-            dbSet.Add(entity);
+            dbSet.Add(entity);            
         }
 
         public virtual void Delete(object id)

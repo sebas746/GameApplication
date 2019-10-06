@@ -1,4 +1,5 @@
 ﻿using GamingApp.Domain.DataContext.GamingApp;
+using GamingApp.Domain.Entities.DTO;
 using GamingApp.Domain.Interfaces.DAC;
 using GamingApp.Domain.Interfaces.Service;
 using System;
@@ -11,30 +12,38 @@ namespace GamingApp.Services
 {
     public class StatisticsService : IStatisticsService
     {
-        private IGamingAppDAC _GamingAppDAC { get; set; }
-        private IRepository<GameStatistics> _repository { get; set; }
+        private IGamingAppDAC _GamingAppDAC { get; set; }       
 
-        public StatisticsService(IGamingAppDAC GamingAppDAC, IRepository<GameStatistics> repository)
+        private IUnitOfWork unitOfWork;
+
+        public StatisticsService(IGamingAppDAC GamingAppDAC, IUnitOfWork unitOfWork)
         {
-            this._GamingAppDAC = GamingAppDAC;
-            this._repository = repository;
+            this._GamingAppDAC = GamingAppDAC;          
+            this.unitOfWork = unitOfWork;
         }
 
         public IEnumerable<GameStatistics> GetStatistics()
         {
-            return _repository.Get();
+            return unitOfWork.GameStatistics.Get();
         }
 
         public GameStatistics GetStatistics(int id)
         {
-            return _repository.GetByID(id);
+            return unitOfWork.GameStatistics.GetByID(id);
         }
 
 
         public int InsertStatistics(GameStatistics gameStatistics)
         {
             gameStatistics.TimeStamp = DateTime.Now;
-            return _GamingAppDAC.InsertGameStatistics(gameStatistics);
+            unitOfWork.GameStatistics.Insert(gameStatistics);
+            unitOfWork.Commit();
+            return 1;
+        }
+
+        public IEnumerable<Ranking> GetTopPlayers()
+        {
+            return _GamingAppDAC.GetTopPlayers();
         }
     }
 }

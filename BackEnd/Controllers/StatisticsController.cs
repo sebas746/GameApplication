@@ -1,4 +1,5 @@
 ﻿using GamingApp.Domain.DataContext.GamingApp;
+using GamingApp.Domain.Entities.DTO;
 using GamingApp.Domain.Interfaces.Service;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,14 @@ namespace GamingAppBackEnd.Controllers
         {
             var response = _IStatisticsService.InsertStatistics(statistics);
             return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("api/Statistics/GetTopPlayers/")]
+        public IEnumerable<Ranking> GetTopPlayers()
+        {
+            var response = _IStatisticsService.GetTopPlayers();
+            return response;
         }
     }
 }

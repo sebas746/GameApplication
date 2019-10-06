@@ -49,7 +49,7 @@ export class GameTableComponent implements OnInit {
     if(this.gameService.checkWinner()) {
       this.winner = this.gameService.getWinner();
       this.winnerModalOpen = true;
-      this.currentRound = 3;
+      this.currentRound--;
       let statistic = new Statistics(0, 
         this.gameService.players[0],
         this.gameService.players[1],

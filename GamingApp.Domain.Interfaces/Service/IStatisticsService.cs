@@ -1,4 +1,5 @@
 ﻿using GamingApp.Domain.DataContext.GamingApp;
+using GamingApp.Domain.Entities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace GamingApp.Domain.Interfaces.Service
         IEnumerable<GameStatistics> GetStatistics();
         GameStatistics GetStatistics(int id);
         int InsertStatistics(GameStatistics gameStatistics);
+        IEnumerable<Ranking> GetTopPlayers();
     }
 }

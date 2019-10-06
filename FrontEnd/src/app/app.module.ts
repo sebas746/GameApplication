@@ -9,6 +9,7 @@ import { GameTableComponent } from './Game/game-table/game-table.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HeaderComponent } from './header/header.component';
 import { StatisticsComponent } from './Game/statistics/statistics.component';
+import { RankingPlayersComponent } from './Game/ranking-players/ranking-players.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StatisticsComponent } from './Game/statistics/statistics.component';
     PlayerSetupComponent,
     GameTableComponent,
     HeaderComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    RankingPlayersComponent
   ],
   imports: [
     BrowserModule,

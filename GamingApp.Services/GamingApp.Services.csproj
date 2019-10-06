@@ -49,6 +49,10 @@
       <Project>{79573AC1-DF37-48CB-9153-C414D76CE3F2}</Project>
       <Name>GamingApp.Domain.DataContext</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GamingApp.Domain.Entities\GamingApp.Domain.Entities.csproj">
+      <Project>{35BD070B-1730-45D1-9970-7A0A22A7459D}</Project>
+      <Name>GamingApp.Domain.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GamingApp.Domain.Interfaces\GamingApp.Domain.Interfaces.csproj">
       <Project>{0E8F950A-460F-438E-A2DB-3BEE75416A46}</Project>
       <Name>GamingApp.Domain.Interfaces</Name>

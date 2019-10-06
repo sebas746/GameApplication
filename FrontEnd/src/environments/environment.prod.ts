@@ -1,6 +1,7 @@
 declare var data: any;
 
 export const environment = {
-  production: true,
-  GetGameStatistics: data.basePath + 'api/Statistics',
+  GetGameStatistics: data.basePath + '/api/Statistics',
+  InsertStatistics: data.basePath + '/api/Statistics/',
+  TopPlayers: data.basePath + '/api/Statistics/GetTopPlayers/',
 };
