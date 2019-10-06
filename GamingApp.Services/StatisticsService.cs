@@ -12,7 +12,7 @@ namespace GamingApp.Services
 {
     public class StatisticsService : IStatisticsService
     {
-        private IGamingAppDAC _GamingAppDAC { get; set; }       
+        private IGamingAppDAC _GamingAppDAC { get; set; }
 
         private IUnitOfWork unitOfWork;
 
@@ -24,26 +24,54 @@ namespace GamingApp.Services
 
         public IEnumerable<GameStatistics> GetStatistics()
         {
-            return unitOfWork.GameStatistics.Get();
+            try
+            {
+                return unitOfWork.GameStatistics.Get();
+            }
+            catch(Exception exc)
+            {
+                throw exc;
+            }
         }
 
         public GameStatistics GetStatistics(int id)
         {
-            return unitOfWork.GameStatistics.GetByID(id);
+            try
+            {
+                return unitOfWork.GameStatistics.GetByID(id);
+            }            
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
 
 
         public int InsertStatistics(GameStatistics gameStatistics)
         {
-            gameStatistics.TimeStamp = DateTime.Now;
-            unitOfWork.GameStatistics.Insert(gameStatistics);
-            unitOfWork.Commit();
-            return 1;
+            try
+            {
+                gameStatistics.TimeStamp = DateTime.Now;
+                unitOfWork.GameStatistics.Insert(gameStatistics);
+                unitOfWork.Commit();
+                return 1;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
 
         public IEnumerable<Ranking> GetTopPlayers()
         {
-            return _GamingAppDAC.GetTopPlayers();
+            try
+            {
+                return _GamingAppDAC.GetTopPlayers();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
     }
 }

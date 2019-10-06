@@ -34,8 +34,7 @@ namespace GamingApp.Dac.Test
 
             //Act
             response = _UnitofWork.GameStatistics.Get();
-
-
+            
             //Asserts
             Assert.IsNotNull(response);
             Assert.IsTrue(response.Count() > 0);
@@ -49,8 +48,7 @@ namespace GamingApp.Dac.Test
 
             //Act
             response = _GamingAppDAC.GetTopPlayers();
-
-
+            
             //Asserts
             Assert.IsNotNull(response);
             Assert.IsTrue(response.Count() > 0);
