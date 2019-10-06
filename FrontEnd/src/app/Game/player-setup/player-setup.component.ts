@@ -3,6 +3,7 @@ import { SignalrService } from 'src/app/services/SignalrService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Player } from 'src/app/Models/player.model';
 import { Router } from '@angular/router';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-player-setup',
@@ -14,7 +15,10 @@ export class PlayerSetupComponent implements OnInit {
   isSubmitted: boolean = false;
   player: Player;
 
-  constructor(private formBuilder: FormBuilder, private signalR: SignalrService, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, 
+    private signalR: SignalrService, 
+    private router: Router,
+    private gameService: GameService) { 
 
   }
 
@@ -27,7 +31,8 @@ export class PlayerSetupComponent implements OnInit {
 
   createForm() {
     this.formulary = this.formBuilder.group({
-      username: ['', Validators.required]
+      username1: ['', Validators.required],
+      username2: ['', Validators.required]
     });
   }
 
@@ -36,10 +41,9 @@ export class PlayerSetupComponent implements OnInit {
     if (this.formulary.invalid) {
       return;
     }
-
-    this.player = new Player(this.formulary.get('username').value, Date.now.toString());    
-    this.player.playerTimeStamp = Date.now.toString();
-    this.signalR.broadcastPlayer(this.player);
+    
+    this.gameService.players = [this.formulary.get('username1').value,  this.formulary.get('username2').value];    
+    this.signalR.broadcastPlayer(this.player);    
     this.router.navigateByUrl("/gameBoard");
   }
 }

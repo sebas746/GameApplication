@@ -1,24 +1,36 @@
 <div class="main-container">
-    <div class="">
-
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    Player 1: <h5>{{ players[0] }}</h5>
+                </div>
+                <div>
+                    Player 2: <h5>{{ players[1] }}</h5>
+                </div>
+                <div>
+                    Current Round: <h5>{{ currentRound }}</h5>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row selecter">
         <div class="col-md-12">
-            <h4>Select your movement...</h4>
+            <h4>{{ currentPlayer }} please pick an element...</h4>
             <br>
         </div>
         <div class="col-md-4 text-center">
-            <button class="btnSubmit btn-warning">
+            <button class="btnSubmit btn-warning" (click)="getMove('Scissors')">
                 <fa name="cut"></fa> Scissors
             </button>
         </div>
         <div class="col-md-4 text-center">
-            <button class="btnSubmit btn-danger">
+            <button class="btnSubmit btn-danger" (click)="getMove('Rock')">
                 <fa name="box"></fa> Rock
             </button>
         </div>
         <div class="col-md-4 text-center">
-            <button class="btnSubmit btn-success">
+            <button class="btnSubmit btn-success" (click)="getMove('Paper')">
                 <fa name="map"></fa> Paper
             </button>
         </div>
@@ -32,20 +44,42 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">{{ players[0] }}</th>
-                        <th scope="col">{{ players[1] }}</th>
+                        <th scope="col">Round Number</th>
+                        <th scope="col">{{ players[0] }} Move</th>
+                        <th scope="col">{{ players[1] }} Move</th>
                         <th scope="col">Winner</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-
-                        <td>Rock</td>
-                        <td>Seassors</td>
-                        <td>Daniel</td>
+                    <tr *ngFor="let result of results">
+                        <td>{{ result.round }}</td>
+                        <td>{{ result.player1Move }}</td>
+                        <td>{{ result.player2Move }}</td>
+                        <td>{{ result.playerWinner }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalWinner" tabindex="-1" role="dialog" aria-labelledby="modalWinner"
+     aria-hidden="true" [ngStyle]="{'display': winnerModalOpen ? 'block' : 'none', 'opacity': 1}">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">There is a Winner!!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            The winner is {{ winner }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="restartService()" data-dismiss="modal">Start Again</button>
+          </div>
+        </div>
+      </div>
+    </div>  
 </div>

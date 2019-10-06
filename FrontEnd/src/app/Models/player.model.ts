@@ -3,5 +3,4 @@ export class Player {
         public playerName?: number,
         public playerTimeStamp?: string
     ) {}
-
 }
