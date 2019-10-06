@@ -1,0 +1,51 @@
+<div class="main-container">
+    <div class="">
+
+    </div>
+    <div class="row selecter">
+        <div class="col-md-12">
+            <h4>Select your movement...</h4>
+            <br>
+        </div>
+        <div class="col-md-4 text-center">
+            <button class="btnSubmit btn-warning">
+                <fa name="cut"></fa> Scissors
+            </button>
+        </div>
+        <div class="col-md-4 text-center">
+            <button class="btnSubmit btn-danger">
+                <fa name="box"></fa> Rock
+            </button>
+        </div>
+        <div class="col-md-4 text-center">
+            <button class="btnSubmit btn-success">
+                <fa name="map"></fa> Paper
+            </button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header text-center">
+            <h4>Game Summary</h4>
+        </div>
+        <div class="card-body">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ players[0] }}</th>
+                        <th scope="col">{{ players[1] }}</th>
+                        <th scope="col">Winner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>Rock</td>
+                        <td>Seassors</td>
+                        <td>Daniel</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

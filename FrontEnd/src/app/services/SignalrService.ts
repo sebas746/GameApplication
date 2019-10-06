@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Player } from '../Models/player.model';
 
 declare var $: any;
 
@@ -11,7 +12,7 @@ export class SignalrService {
     constructor() { }
 
     public initializeSignalRConnection(): void {
-        let signalRServerEndPoint = 'http://localhost:53318/SignalR';
+        let signalRServerEndPoint = 'http://localhost:52364/SignalR';
         this.connection = $.hubConnection(signalRServerEndPoint);
         this.proxy = this.connection.createHubProxy('SignalRHub')
 
@@ -23,8 +24,16 @@ export class SignalrService {
             console.log('Notification Hub error -> ' + error);
         });
     }
+
+    public broadcastPlayer(player: Player) {
+        this.proxy.invoke('BroadcastPlayer', JSON.stringify(player))
+            .catch((error: any) => {
+                console.log('broadcastMessage error -> ' + error);
+            });
+    }
+
     private broadcastMessage(): void {
-        this.proxy.invoke('BroadcastCommonData', { 'Timestamp': 'text message', 'From': 'text message', 'Message': 'text message' })
+        this.proxy.invoke('BroadcastCommonData', 'hello')
             .catch((error: any) => {
                 console.log('broadcastMessage error -> ' + error);
             });

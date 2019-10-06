@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace GamingAppBackEnd
 {
@@ -13,6 +14,9 @@ namespace GamingAppBackEnd
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            // Configuración y servicios de API web
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using GamingAppBackEnd.Models;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,14 @@ namespace GamingAppBackEnd.SignalR
 
         // Send the data to all clients (may be called from server C#)
         // In this example, called by TestController on data update (see the Post method)
-        public static void BroadcastCommonDataStatic(string data)
+        public void BroadcastCommonDataStatic(string data)
         {
             hubContext.Clients.All.BroadcastCommonData(data);
+        }
+
+        public void BroadcastPlayer(string player)
+        {
+            hubContext.Clients.All.BroadcastCommonData(player);
         }
     }
 }
