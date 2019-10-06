@@ -11,6 +11,6 @@ namespace GamingApp.Domain.Interfaces.Service
     {
         IEnumerable<GameStatistics> GetStatistics();
         GameStatistics GetStatistics(int id);
-        int InsertGameStatistics(GameStatistics gameStatistics);
+        int InsertStatistics(GameStatistics gameStatistics);
     }
 }

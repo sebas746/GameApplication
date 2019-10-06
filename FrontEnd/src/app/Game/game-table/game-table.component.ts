@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Player } from 'src/app/Models/player.model';
 import { GameService } from '../game.service';
 import { Results } from 'src/app/Models/results.model';
+import { RestService } from 'src/app/services/RestServices.service';
+import { Statistics } from 'src/app/Models/statistics.model';
 
 @Component({
   selector: 'app-game-table',
@@ -17,7 +19,7 @@ export class GameTableComponent implements OnInit {
   player2Move: string = '';
   winnerModalOpen = false;
   
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameService, private repoService: RestService) {
 
   }
 
@@ -48,7 +50,14 @@ export class GameTableComponent implements OnInit {
       this.winner = this.gameService.getWinner();
       this.winnerModalOpen = true;
       this.currentRound = 3;
-      console.log('the winner: ' + this.winner);
+      let statistic = new Statistics(0, 
+        this.gameService.players[0],
+        this.gameService.players[1],
+        this.winner, 
+        Date.now.toString(),
+        this.gameService.currentScore[0] + ' - ' + this.gameService.currentScore[1]  
+      )
+      this.repoService.createStatistic(statistic);
     }
   }
 

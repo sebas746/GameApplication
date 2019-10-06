@@ -100,5 +100,5 @@ export class GameService {
 
     players: string[] = ['unknonw player 1', 'unkonwn player 2'];
     results: Results[] = [];
-    currentScore: number[] = [0, 0];
+    currentScore: number[] = [0, 0];    
 }

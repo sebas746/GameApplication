@@ -30,7 +30,8 @@ namespace GamingApp.Services
             return _repository.GetByID(id);
         }
 
-        public int InsertGameStatistics(GameStatistics gameStatistics)
+
+        public int InsertStatistics(GameStatistics gameStatistics)
         {
             gameStatistics.TimeStamp = DateTime.Now;
             return _GamingAppDAC.InsertGameStatistics(gameStatistics);

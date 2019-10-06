@@ -1,0 +1,26 @@
+<div class="form-row">
+    <div class="form-group col-md-12">
+        <h2 class="title">General Statistics</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Player1 Name</th>
+                    <th scope="col">Player2 Name</th>
+                    <th scope="col">Player Winner</th>
+                    <th scope="col">TimeStamp</th>
+                    <th scope="col">Final Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let statistic of statistics">
+                    <td>{{ statistic.Player1Name }}</td>
+                    <td>{{ statistic.Player2Name }}</td>
+                    <td>{{ statistic.PlayerWinner }}</td>
+                    <td>{{ statistic.TimeStamp }}</td>
+                    <td>{{ statistic.FinalScore }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

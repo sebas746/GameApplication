@@ -32,5 +32,12 @@ namespace GamingAppBackEnd.Controllers
             var response = _IStatisticsService.GetStatistics(id);
             return response;
         }
+
+        [HttpPost]
+        public IHttpActionResult CreateStatistics(GameStatistics statistics)
+        {
+            var response = _IStatisticsService.InsertStatistics(statistics);
+            return Ok(response);
+        }
     }
 }
