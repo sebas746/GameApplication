@@ -12,15 +12,22 @@ namespace GamingApp.Services
     public class StatisticsService : IStatisticsService
     {
         private IGamingAppDAC _GamingAppDAC { get; set; }
+        private IRepository<GameStatistics> _repository { get; set; }
 
-        public StatisticsService(IGamingAppDAC GamingAppDAC)
+        public StatisticsService(IGamingAppDAC GamingAppDAC, IRepository<GameStatistics> repository)
         {
             this._GamingAppDAC = GamingAppDAC;
+            this._repository = repository;
         }
 
-        public List<GameStatistics> GetAll()
+        public IEnumerable<GameStatistics> GetStatistics()
         {
-            return _GamingAppDAC.GetAll();
+            return _repository.Get();
+        }
+
+        public GameStatistics GetStatistics(int id)
+        {
+            return _repository.GetByID(id);
         }
 
         public int InsertGameStatistics(GameStatistics gameStatistics)

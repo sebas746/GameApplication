@@ -9,7 +9,8 @@ namespace GamingApp.Domain.Interfaces.Service
 {
     public interface IStatisticsService
     {
-        List<GameStatistics> GetAll();
+        IEnumerable<GameStatistics> GetStatistics();
+        GameStatistics GetStatistics(int id);
         int InsertGameStatistics(GameStatistics gameStatistics);
     }
 }

@@ -22,7 +22,14 @@ namespace GamingAppBackEnd.Controllers
         [HttpGet]
         public IEnumerable<GameStatistics> GetStatistics()
         {
-            var response = _IStatisticsService.GetAll();
+            var response = _IStatisticsService.GetStatistics();
+            return response;
+        }
+
+        [HttpGet]
+        public GameStatistics GetStatistics(int id)
+        {
+            var response = _IStatisticsService.GetStatistics(id);
             return response;
         }
     }

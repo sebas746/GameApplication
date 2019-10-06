@@ -1,4 +1,5 @@
-﻿using GamingApp.DAC.DataAccess.GamingApp;
+﻿using GamingApp.DAC.DataAccess;
+using GamingApp.DAC.DataAccess.GamingApp;
 using GamingApp.Domain.Interfaces.DAC;
 using GamingApp.Domain.Interfaces.Service;
 using GamingApp.Services;
@@ -19,6 +20,7 @@ namespace GamingAppBackEnd
             var container = new UnityContainer();
             container.RegisterType<IStatisticsService, StatisticsService>();
             container.RegisterType<IGamingAppDAC, GamingAppDAC>();
+            container.RegisterType(typeof(IRepository<>), typeof(BaseRepository<>));
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes
