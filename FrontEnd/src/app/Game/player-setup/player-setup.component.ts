@@ -43,7 +43,7 @@ export class PlayerSetupComponent implements OnInit {
     }
     
     this.gameService.players = [this.formulary.get('username1').value,  this.formulary.get('username2').value];    
-    this.signalR.broadcastPlayer(this.player);    
+    // this.signalR.broadcastPlayer(this.player);    
     this.router.navigateByUrl("/gameBoard");
   }
 }
