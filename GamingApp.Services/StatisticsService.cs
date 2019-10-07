@@ -12,6 +12,7 @@ namespace GamingApp.Services
 {
     public class StatisticsService : IStatisticsService
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private IGamingAppDAC _GamingAppDAC { get; set; }
 
         private IUnitOfWork unitOfWork;
@@ -30,6 +31,8 @@ namespace GamingApp.Services
             }
             catch(Exception exc)
             {
+                log.Error(exc.Message);
+                log.Error(exc.InnerException.Message);
                 throw exc;
             }
         }
@@ -42,6 +45,8 @@ namespace GamingApp.Services
             }            
             catch (Exception exc)
             {
+                log.Error(exc.Message);
+                log.Error(exc.InnerException.Message);
                 throw exc;
             }
         }
@@ -58,6 +63,8 @@ namespace GamingApp.Services
             }
             catch (Exception exc)
             {
+                log.Error(exc.Message);
+                log.Error(exc.InnerException.Message);
                 throw exc;
             }
         }
@@ -70,6 +77,8 @@ namespace GamingApp.Services
             }
             catch (Exception exc)
             {
+                log.Error(exc.Message);
+                log.Error(exc.InnerException.Message);
                 throw exc;
             }
         }
